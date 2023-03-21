@@ -1,5 +1,14 @@
 {{> header}}
-<main>
 
+<main>
+    <h1>Welkom!</h1>
+    <p>Ontdek onze meesterwerken vanuit je luie stoel!</p>
+    <ul>
+        {{#each data}}
+        <li>
+            <img src="{{this.webImage.url}}" alt="{{this.title}}">
+            <h3>{{this.title}}</h3>
+        </li>
+        {{/each}}
+    </ul>
 </main>
-{{> footer}}
