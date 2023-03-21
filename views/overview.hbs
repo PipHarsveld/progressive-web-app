@@ -1,4 +1,12 @@
 {{> header}}
 <main>
-<h1>Overview</h1>
+    <h1>Overview</h1>
+    <p>Ontdek onze meesterwerken vanuit je luie stoel!</p>
+    <ul>
+        {{#each data}}
+        <a href="/details/{{this.id}}">
+            <img src="{{this.webImage.url}}" alt="{{this.title}}">
+        </a>
+        {{/each}}
+    </ul>
 </main>

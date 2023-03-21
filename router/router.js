@@ -4,33 +4,53 @@ import request from 'request';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=RYeqgpSb&ps=10`, {json: true}, function (err, response, data){
-		if (err) {
-			res.send(err);
-            console.error('error:', error);
-		} else {
-            console.log('API response:', data.artObjects[0]); 
-            const artPieces = data.artObjects;
-			res.render('main', {layout : 'index', data: artPieces});
-		}
-    })
+    res.render('main', { layout: 'index' });
 })
 
 router.get('/overview', (req, res) => {
-    res.render('overview', { layout: 'index' });
+    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=RYeqgpSb&ps=6`, {json: true}, function (err, response, data){
+        if (err) {
+            res.send(err);
+            console.error('error:', error);
+        } else {
+            // console.log('API response:', data.artObjects[0]);
+            const artPieces = data.artObjects;
+            res.render('overview', {layout : 'index', data: artPieces});
+        }
+    })
 });
 
-router.get('/detail', (req, res) => {
-    res.render('detail', { layout: 'index' });
+router.get('/details', (req, res) => {
+    res.render('details', { layout: 'index' });
 });
+
+
+router.get('/categorie/:type', (req, res) => {
+    const typeArt = req.params['type'];
+    console.log(typeArt);
+
+    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=RYeqgpSb&type=${typeArt}`, {json: true}, function (err, response, data){
+        if (err) {
+            res.send(err);
+            console.error('error:', error);
+        } else {
+            console.log('API response:', data.artObjects[0]);
+            const specificArtPieces = data.artObjects;
+            res.render('paintings', {layout : 'index', data: specificArtPieces});
+        }
+    })
+});
+
+
 
 router.get('/schilderijen', (req, res) => {
-    res.render('paintings', { layout: 'index' });
+    
 });
 
 router.get('/sculpturen', (req, res) => {
-    res.render('sculptures', { layout: 'index' });
+    
 });
+
 
 router.get('/zoeken', (req, res) => {
     res.render('search', { layout: 'index' });
