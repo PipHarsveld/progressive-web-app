@@ -46,6 +46,7 @@ li {
 /********/
 :root {
     --background-color: #40474F;
+    --accent-color: #D55140;
 
     --text-color: #ffffff;
 
@@ -67,11 +68,13 @@ body {
     background-clip: content-box;
 }
 
-h3,
+
+
+/* h3,
 h2,
 p {
     text-align: center;
-}
+} */
 
 
 
@@ -86,7 +89,7 @@ header {
     background-size: cover;
 }
 
-header>section {
+header>section:first-of-type {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,6 +107,33 @@ header>section>a>img {
 header>section:nth-of-type(2)>h1::first-letter {
     text-transform: capitalize;
 }
+
+
+/*****************************/
+/* Main -> Introductiepagina */
+/*****************************/
+.main {
+    padding: 2rem;
+}
+
+
+.main>a {
+    display: block;
+    margin: auto;
+    margin-top: 3.5rem;
+    /* border-radius: 4px; */
+    background-color: var(--accent-color);
+    border: none;
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 700;
+    padding: .5rem;
+    width: 15rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
 
 
 
