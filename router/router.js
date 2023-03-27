@@ -16,7 +16,6 @@ router.get('/overview', (req, res) => {
             res.send(err);
             console.error('error:', error);
         } else {
-            // console.log('API response:', data.artObjects[0]);
             const artPieces = data.artObjects;
             res.render('overview', {layout : 'index', data: artPieces});
         }
