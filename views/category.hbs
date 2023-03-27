@@ -1,12 +1,14 @@
 {{> header}}
-<main>
+<main class="category">
     <h1>{{categorie}}en</h1>
     <ul>
         {{#each data}}
-        <a href="/details/{{this.id}}">
-            <img src="{{this.webImage.url}}" alt="{{this.title}}">
-            <h2>{{this.title}}</h2>
-        </a>
+        <li>
+            <a href="/details/{{this.id}}">
+                <img src="{{this.webImage.url}}" alt="{{this.title}}">
+                <h2>{{this.title}}</h2>
+            </a>
+        </li>
         {{/each}}
     </ul>
 </main>
