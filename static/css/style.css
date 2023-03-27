@@ -79,18 +79,30 @@ p {
 /* Header met logo */
 /*******************/
 header {
-    display: flex;
-    justify-content: space-around;
-    margin: 2rem auto;
-    align-items: center;
+    padding: 2rem;
+    background-image: url("../images/background_header.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-header>h1>a>img {
+header>section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+header>section>h1>a>img {
     width: 15rem;
 }
 
-header>a>img {
+header>section>a>img {
     width: 2rem;
+}
+
+header>section:nth-of-type(2)>h1::first-letter {
+    text-transform: capitalize;
 }
 
 
@@ -109,7 +121,7 @@ header>a>img {
     grid-row-gap: 0px;
 }
 
-.overview>ul>li{
+.overview>ul>li {
     overflow: hidden;
 }
 
@@ -141,9 +153,10 @@ header>a>img {
     grid-area: 4 / 3 / 5 / 4;
 }
 
-.overview>ul>li>a>img{
-    min-width: 100%;
+.overview>ul>li>a>img {
+    object-fit: cover;
     min-height: 100%;
+    object-position: center;
 }
 
 
