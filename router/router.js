@@ -53,7 +53,7 @@ router.get('/categorie/:type', (req, res) => {
         } else {
             console.log('API response:', data.artObjects[0]);
             const specificArtPieces = data.artObjects;
-            res.render('paintings', {layout : 'index', data: specificArtPieces});
+            res.render('category', {layout : 'index', data: specificArtPieces, categorie: typeArt});
         }
     })
 });
