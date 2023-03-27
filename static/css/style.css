@@ -108,6 +108,11 @@ header>section:nth-of-type(2)>h1::first-letter {
     text-transform: capitalize;
 }
 
+.details>header{
+    background-image: none;
+}
+
+
 
 /*****************************/
 /* Main -> Introductiepagina */
@@ -116,12 +121,10 @@ header>section:nth-of-type(2)>h1::first-letter {
     padding: 2rem;
 }
 
-
 .main>a {
     display: block;
     margin: auto;
     margin-top: 3.5rem;
-    /* border-radius: 4px; */
     background-color: var(--accent-color);
     border: none;
     color: var(--text-color);
@@ -190,35 +193,22 @@ header>section:nth-of-type(2)>h1::first-letter {
 }
 
 
-/*******************/
-/* Onboarding page */
-/*******************/
-/* .onboardingPage {
-    padding: 0 2rem;
+
+
+
+
+/***********/
+/* Details */
+/***********/
+.details>main>img{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 60vh;
+    object-fit: cover;
 }
 
-.onboardingPage>h2,
-.onboardingPage>p {
-    margin-top: 1.5rem;
+.details>main>h1{
+    position: absolute;
+    top: 65vh;
 }
-
-.onboardingPage>a {
-    display: block;
-    margin: auto;
-    margin-top: 3.5rem;
-    border-radius: 4px;
-    background-color: rgba(30, 19, 12, 1);
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-weight: 700;
-    padding: .5rem;
-    width: 15rem;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.onboardingPage>a:focus {
-    border: .2rem solid #ffffff;
-    outline: none;
-} */
