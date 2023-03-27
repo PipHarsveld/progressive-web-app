@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/overview', (req, res) => {
-    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&ps=6`, {json: true}, function (err, response, data){
+    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&ps=8`, {json: true}, function (err, response, data){
         if (err) {
             res.send(err);
             console.error('error:', error);
