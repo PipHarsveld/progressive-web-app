@@ -14,7 +14,7 @@ router.get('/overview', (req, res) => {
     request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&ps=7`, {json: true}, function (err, response, data){
         if (err) {
             res.send(err);
-            console.error('error:', error);
+            console.error('error:', err);
         } else {
             const artPieces = data.artObjects;
             res.render('overview', {layout : 'index', data: artPieces});
@@ -30,10 +30,10 @@ router.get('/details/:id', (req, res) => {
     request(`https://www.rijksmuseum.nl/api/nl/collection/${id}?key=${process.env.API_KEY}`, {json: true}, function (err, response, data){
         if (err) {
             res.send(err);
-            console.error('error:', error);
+            console.error('error:', err);
         } else {
             const details = data.artObject;
-            console.log(details.title);
+            console.log(details);
             res.render('details', { layout: 'index', data: details});
         }
     })
@@ -48,7 +48,7 @@ router.get('/categorie/:type', (req, res) => {
     request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&type=${typeArt}`, {json: true}, function (err, response, data){
         if (err) {
             res.send(err);
-            console.error('error:', error);
+            console.error('error:', err);
         } else {
             console.log('API response:', data.artObjects[0]);
             const specificArtPieces = data.artObjects;
