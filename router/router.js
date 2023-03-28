@@ -62,4 +62,10 @@ router.get('/zoeken', (req, res) => {
     res.render('search', { layout: 'index' });
 });
 
+
+router.get('/offline', (req, res) => {
+    res.render('offline', { layout: 'index' });
+});
+
+
 export {router};
