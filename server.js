@@ -14,7 +14,7 @@ app.set('views', 'views');
 
 app.use('/', router);
 app.use(express.static(__dirname + '/static')); //Css, images en javascript
-
+app.use('/', express.static(__dirname + '/'));
 
 app.engine('hbs', handlebars.engine({
     layoutsDir: __dirname + '/views/layouts',
@@ -27,5 +27,3 @@ app.engine('hbs', handlebars.engine({
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });
-
-
