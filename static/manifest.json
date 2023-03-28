@@ -1,5 +1,6 @@
 {    
     "name" : "RijksKunst",
+    "short_name" : "RijksKunst",
     "description" : "Look at the Rijksmuseum art from the comfort of your own home!",
     "display" : "standalone",
     "scope" : "/",
