@@ -97,11 +97,11 @@ header>section:first-of-type {
     margin-bottom: 2rem;
 }
 
-header>section>h1>a>img {
+header>section>h1>a>svg {
     width: 15rem;
 }
 
-header>section>a>img {
+header>section>a>svg {
     width: 2rem;
 }
 
