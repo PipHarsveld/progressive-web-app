@@ -145,14 +145,15 @@ header>section:nth-of-type(2)>h1::first-letter {
 /************/
 /* Overview */
 /************/
+.overview>h2{
+    margin: 3rem auto .5rem 2rem;
+}
+
 .overview>ul {
-    position: absolute;
-    bottom: 0;
     display: grid;
     grid-template-columns: repeat(3, calc(100vw / 3));
     grid-template-rows: repeat(4, calc(100vw / 3));
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-gap: .3rem;
 }
 
 .overview>ul>li {
@@ -207,6 +208,7 @@ header>section:nth-of-type(2)>h1::first-letter {
     top: 0;
     z-index: -1;
     height: 60vh;
+    width: 100vw;
     object-fit: cover;
 }
 
@@ -215,7 +217,6 @@ header>section:nth-of-type(2)>h1::first-letter {
     position: absolute;
     top: 60vh;
 }
-
 
 .details>main>section>ul{
     display: flex;
@@ -231,6 +232,7 @@ header>section:nth-of-type(2)>h1::first-letter {
     text-decoration: none;
     color: var(--text-color);
     cursor: pointer;
+    display: inline-block;
 }
 
 .details>main>section>ul>li>a::first-letter {
