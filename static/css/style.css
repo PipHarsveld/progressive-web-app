@@ -46,6 +46,7 @@ li {
 /********/
 :root {
     --background-color: #40474F;
+    --dark-color: #202327;
     --accent-color: #D55140;
 
     --text-color: #ffffff;
@@ -200,6 +201,7 @@ header>section:nth-of-type(2)>h1::first-letter {
 /***********/
 /* Details */
 /***********/
+
 .details>main>img{
     position: absolute;
     top: 0;
@@ -208,7 +210,29 @@ header>section:nth-of-type(2)>h1::first-letter {
     object-fit: cover;
 }
 
-.details>main>h1{
+.details>main>section{
+    padding: 2rem;
     position: absolute;
-    top: 65vh;
+    top: 60vh;
+}
+
+
+.details>main>section>ul{
+    display: flex;
+}
+
+.details>main>section>ul>li{
+    margin: 1rem 1rem .5rem 0;
+    background-color: var(--dark-color);
+    padding: .5rem;
+}
+
+.details>main>section>ul>li>a{
+    text-decoration: none;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.details>main>section>ul>li>a::first-letter {
+    text-transform: capitalize;
 }
