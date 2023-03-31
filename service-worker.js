@@ -1,40 +1,108 @@
-const CORE_CACHE = 1
+// Define constants
+const CORE_CACHE = 1 
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
-const CORE_ASSETS = ["manifest.json", "/offline", "css/style.css"]
+// Array of core assets to be cached
+const CORE_ASSETS = [
+    "/manifest.json", 
+    "/offline", 
+    "/css/style.css",
+    "/images/background_header.jpeg",
+    "/images/icon-192x192.png"
+] 
 
-self.addEventListener('install', (event) => {
+// Install event that is triggered when the service worker is first installed
+self.addEventListener('install', (event) => { 
     console.log("Installed")
     event.waitUntil(
+        // Open the cache and add all the core assets to it
         caches.open(CORE_CACHE_NAME)
             .then(cache => cache.addAll(CORE_ASSETS))
-            .then(() => self.skipWaiting())
+            // Activate the service worker immediately once the core assets have been cached
+            .then(() => self.skipWaiting()) 
     )
 })
 
+//Activate event that is triggered when the service worker is activated
 self.addEventListener("activate", (event) => {
-    console.log("Activated")
-    event.waitUntil(clients.claim())
+    console.log("Activating service worker")
+    // Ensure that the service worker takes control of all pages within its scope
+    event.waitUntil(clients.claim()) 
 })
 
+// Fetch event that is triggered when a resource is fetched
 self.addEventListener("fetch", (event) => {
     const req = event.request
-    console.log("Fetching:" + req.url)
+    console.log("Fetch event:" + req.url)
 
-    // show cached request from cache
-    event.respondWith(
-        caches.match(req)
-            .then(cachedRes => {
-                if (cachedRes) {
-                    return cachedRes
-                }
-                return fetch(req)
-                    .then((fetchRes) => fetchRes)
-                    .catch((err) => {
-                        return caches.open(CORE_CACHE_NAME)
-                            .then(cache => cache.match('/offline'))
-                    })
-            })
-    )
-})
+    //Check if the request is a GET request
+    if (isCoreGetRequest(req)) {
+        console.log('Core get request: ', req.url);
+        
+        event.respondWith(
+            caches.open(CORE_CACHE_NAME)
+                .then(cache => cache.match(req.url)) // Check if the request is already cached
+        )
+    } else if (isHtmlGetRequest(req)) { // Check if the request is a GET request for HTML when its not a core GET request
+        console.log('html get request', req.url)
+        // generic fallback
+        event.respondWith(
+            caches.open('html-cache')
+                .then(cache => cache.match(req.url))
+                .then(response => response ? response : fetchAndCache(req, 'html-cache'))
+                .catch(e => {
+                    return caches.open(CORE_CACHE_NAME)
+                        .then(cache => cache.match('/offline'))
+                })
+        )
+    }
+});
+
+
+function fetchAndCache(request, cacheName) {
+    return fetch(request)
+        .then(response => {
+            if (!response.ok) {
+                throw new TypeError('Bad response status');
+            }
+
+            const clone = response.clone()
+            caches.open(cacheName).then((cache) => cache.put(request, clone))
+            return response
+        })
+}
+
+// /**
+//  * @param {Object} request        The request object
+//  * @returns {Boolean}            Boolean value indicating whether the request is a GET and HTML request
+//  */
+
+// Checks if a request is a GET request for HTML and if the URL is in the CORE_ASSETS array
+function isHtmlGetRequest(request) {
+    return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').indexOf('text/html') > -1);
+}
+
+// /**
+//  * Checks if a request is a core GET request
+//  *
+//  * @param {Object} request        The request object
+//  * @returns {Boolean}            Boolean value indicating whether the request is in the core mapping
+//  */
+function isCoreGetRequest(request) {
+    return request.method === 'GET' && CORE_ASSETS.includes(getPathName(request.url));
+}
+
+// /**
+//  * Get a pathname from a full URL by stripping off domain
+//  *
+//  * @param {Object} requestUrl        The request object, e.g. https://www.mydomain.com/index.css
+//  * @returns {String}                Relative url to the domain, e.g. index.css
+//  */
+function getPathName(requestUrl) {
+    const url = new URL(requestUrl);
+    return url.pathname;
+}
+
+
+
 
 console.log('Hello from service worker!');
