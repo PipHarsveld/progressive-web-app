@@ -19,6 +19,8 @@ As an art lover, I want to be able to search and view art from the Rijksmuseum a
 
 ## :sparkles:Features
 - [X] Overview of different artworks
+- [X] Detail page of a single artwork
+- [X] Filter artworks based on category
 - [ ] Search bar for searching artworks based on object number, title of artwork or artist
 
 ## :rocket:Install and Run the project
