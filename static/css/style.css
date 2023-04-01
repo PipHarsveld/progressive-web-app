@@ -69,6 +69,11 @@ body {
     background-clip: content-box;
 }
 
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-color);
+}
 
 
 /* h3,
@@ -109,7 +114,7 @@ header>section:nth-of-type(2)>h1::first-letter {
     text-transform: capitalize;
 }
 
-.details>header{
+.details>header {
     background-image: none;
 }
 
@@ -133,8 +138,6 @@ header>section:nth-of-type(2)>h1::first-letter {
     font-weight: 700;
     padding: .5rem;
     width: 15rem;
-    cursor: pointer;
-    text-decoration: none;
 }
 
 
@@ -145,7 +148,7 @@ header>section:nth-of-type(2)>h1::first-letter {
 /************/
 /* Overview */
 /************/
-.overview>h2{
+.overview>h2 {
     margin: 3rem auto .5rem 2rem;
 }
 
@@ -203,7 +206,7 @@ header>section:nth-of-type(2)>h1::first-letter {
 /* Details */
 /***********/
 
-.details>main>img{
+.details>main>img {
     position: absolute;
     top: 0;
     z-index: -1;
@@ -212,29 +215,76 @@ header>section:nth-of-type(2)>h1::first-letter {
     object-fit: cover;
 }
 
-.details>main>section{
+.details>main>section {
     padding: 2rem;
     position: absolute;
     top: 60vh;
 }
 
-.details>main>section>ul{
+.details>main>section>ul {
     display: flex;
 }
 
-.details>main>section>ul>li{
+.details>main>section>ul>li {
     margin: 1rem 1rem .5rem 0;
     background-color: var(--dark-color);
     padding: .5rem;
 }
 
-.details>main>section>ul>li>a{
-    text-decoration: none;
+.details>main>section>ul>li>a {
     color: var(--text-color);
-    cursor: pointer;
     display: inline-block;
 }
 
 .details>main>section>ul>li>a::first-letter {
     text-transform: capitalize;
+}
+
+
+/**********/
+/* Zoeken */
+/**********/
+.search {
+    padding: 2rem;
+}
+
+.search>form {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.search>form>label {
+    display: none;
+}
+
+.search>form>input {
+    background-color: var(--background-color);
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    width: 100%;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.search>form>button {
+    background-color: transparent;
+    background-image: url("../images/search.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: -999px;
+    width: 2rem;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0rem;
+}
+
+.search>nav>ul>li {
+    margin-top: 1rem;
+}
+
+.search>nav>ul>li>a {
+    display: inline-block;
+    width: 100%;
 }
