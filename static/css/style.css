@@ -69,10 +69,18 @@ body {
     background-clip: content-box;
 }
 
+main{
+    overflow: hidden;
+}
+
 a {
     cursor: pointer;
     text-decoration: none;
     color: var(--text-color);
+}
+
+header>section a{
+    font-size: 0pt;
 }
 
 
@@ -100,6 +108,10 @@ header>section:first-of-type {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+header>section>h1{
+    display: flex;
 }
 
 header>section>h1>a>svg {
@@ -140,6 +152,9 @@ header>section:nth-of-type(2)>h1::first-letter {
     width: 15rem;
 }
 
+.main>p{
+    margin-top: 1rem;
+}
 
 
 
