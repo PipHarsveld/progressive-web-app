@@ -17,7 +17,7 @@ router.get('/overview', (req, res) => {
             console.error('error:', err);
         } else {
             const artPieces = data.artObjects;
-            res.render('overview', {layout : 'index', data: artPieces});
+            res.render('overview', {layout : 'index', data: artPieces, title: 'Overzicht'});
         }
     })
 });
@@ -33,8 +33,7 @@ router.get('/details/:id', (req, res) => {
             console.error('error:', err);
         } else {
             const details = data.artObject;
-            console.log(details);
-            res.render('details', { layout: 'index', data: details});
+            res.render('details', { layout: 'index', data: details, title: 'Details'});
         }
     })
 
@@ -50,21 +49,20 @@ router.get('/categorie/:type', (req, res) => {
             res.send(err);
             console.error('error:', err);
         } else {
-            console.log('API response:', data.artObjects[0]);
             const specificArtPieces = data.artObjects;
-            res.render('category', {layout : 'index', data: specificArtPieces, categorie: typeArt});
+            res.render('category', {layout : 'index', data: specificArtPieces, categorie: typeArt, title: 'Categorie'});
         }
     })
 });
 
 
 router.get('/zoeken', (req, res) => {
-    res.render('search', { layout: 'index' });
+    res.render('search', { layout: 'index', title: 'Zoeken' });
 });
 
 
 router.get('/offline', (req, res) => {
-    res.render('offline', { layout: 'index' });
+    res.render('offline', { layout: 'index', title: 'Offline'});
 });
 
 
