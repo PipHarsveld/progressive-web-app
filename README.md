@@ -49,7 +49,7 @@ In the router.js file, I defined different routes using the router.get() method 
 
 
 ## :bulb:Api
-I used the Rijksmuseum API for this project and before I started, I did some research to the API. The research can be found in [the wiki](https://github.com/PipHarsveld/rijksmuseum/wiki/Analyseren).
+I used the Rijksmuseum API for this project and before I started, I did some research to the API. The Rijksmuseum API is a public API provided by the Rijksmuseum in Amsterdam, which allows developers to access and use data about the museum's collections. The API provides access to a large number of images and metadata for artworks, along with other information such as artist biographies and collection highlights. If you would like to know more about the API, you can visit the [Rijksmuseum API documentation](https://data.rijksmuseum.nl/object-metadata/api/) or read my [research](https://github.com/PipHarsveld/rijksmuseum/wiki/Analyseren).
 
 
 ## :ledger:Sources
