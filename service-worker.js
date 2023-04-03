@@ -1,24 +1,25 @@
 // Define constants
-const CORE_CACHE = 1 
+const CORE_CACHE = 1
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
 // Array of core assets to be cached
 const CORE_ASSETS = [
-    "/manifest.json", 
-    "/offline", 
+    "/manifest.json",
+    "/offline",
     "/css/style.css",
     "/images/background_header.jpeg",
     "/images/icon-192x192.png"
-] 
+]
 
 // Install event that is triggered when the service worker is first installed
-self.addEventListener('install', (event) => { 
-    console.log("Installed")
+self.addEventListener('install', (event) => {
+    console.log("Installed service worker")
+
     event.waitUntil(
         // Open the cache and add all the core assets to it
         caches.open(CORE_CACHE_NAME)
             .then(cache => cache.addAll(CORE_ASSETS))
             // Activate the service worker immediately once the core assets have been cached
-            .then(() => self.skipWaiting()) 
+            .then(() => self.skipWaiting())
     )
 })
 
@@ -26,25 +27,25 @@ self.addEventListener('install', (event) => {
 self.addEventListener("activate", (event) => {
     console.log("Activating service worker")
     // Ensure that the service worker takes control of all pages within its scope
-    event.waitUntil(clients.claim()) 
+    event.waitUntil(clients.claim())
 })
 
-// Fetch event that is triggered when a resource is fetched
-self.addEventListener("fetch", (event) => {
-    const req = event.request
-    console.log("Fetch event:" + req.url)
 
-    //Check if the request is a GET request
+self.addEventListener("fetch", (event) => {
+    const req = event.request;
+    console.log("Fetch event:" + req.url);
+
+    // Check if the request is a GET request
     if (isCoreGetRequest(req)) {
         console.log('Core get request: ', req.url);
-        
+
         event.respondWith(
             caches.open(CORE_CACHE_NAME)
                 .then(cache => cache.match(req.url)) // Check if the request is already cached
-        )
-    } else if (isHtmlGetRequest(req)) { // Check if the request is a GET request for HTML when its not a core GET request
-        console.log('html get request', req.url)
-        // generic fallback
+        );
+    } else if (isHtmlGetRequest(req)) { // Check if the request is a GET request for HTML when it's not a core GET request
+        console.log('html get request', req.url);
+
         event.respondWith(
             caches.open('html-cache')
                 .then(cache => cache.match(req.url))
@@ -56,7 +57,6 @@ self.addEventListener("fetch", (event) => {
         )
     }
 });
-
 
 function fetchAndCache(request, cacheName) {
     return fetch(request)
@@ -71,38 +71,16 @@ function fetchAndCache(request, cacheName) {
         })
 }
 
-// /**
-//  * @param {Object} request        The request object
-//  * @returns {Boolean}            Boolean value indicating whether the request is a GET and HTML request
-//  */
-
 // Checks if a request is a GET request for HTML and if the URL is in the CORE_ASSETS array
 function isHtmlGetRequest(request) {
     return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').indexOf('text/html') > -1);
 }
 
-// /**
-//  * Checks if a request is a core GET request
-//  *
-//  * @param {Object} request        The request object
-//  * @returns {Boolean}            Boolean value indicating whether the request is in the core mapping
-//  */
 function isCoreGetRequest(request) {
     return request.method === 'GET' && CORE_ASSETS.includes(getPathName(request.url));
 }
 
-// /**
-//  * Get a pathname from a full URL by stripping off domain
-//  *
-//  * @param {Object} requestUrl        The request object, e.g. https://www.mydomain.com/index.css
-//  * @returns {String}                Relative url to the domain, e.g. index.css
-//  */
 function getPathName(requestUrl) {
     const url = new URL(requestUrl);
     return url.pathname;
 }
-
-
-
-
-console.log('Hello from service worker!');
