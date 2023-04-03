@@ -33,7 +33,11 @@ git clone https://github.com/PipHarsveld/rijksmuseum
 Congrats, you are now all set! Start your liveserver and enjoy!
 
 ## :fork_and_knife:Rendering choices
-<!-- ...you should implement an explanation of client- server rendering choices 🍽 -->
+Client-side rendering and server-side rendering are two approaches used to display web content. With client-side rendering, the web browser requests data from the server and then uses JavaScript to generate and display the HTML. Server-side rendering, on the other hand, is when the server generates the HTML for a webpage and sends it to the client. 
+There are a few pro's to using server-side rendering. It can improve search engine optimization, provide faster page loading times, and improve the user experience. By rendering the pages on the server-side, the HTML content is generated on the server and sent to the client as a complete webpage. This reduces the amount of work that needs to be done on the client-side, resulting in a faster and smoother user experience.
+
+I implemented server-side rendering in my project using Express and Handlebars. I created a file called router.js in my router directory to render different pages.
+In the router.js file, I defined different routes using the router.get() method to render the respective pages. For example, the /overview route fetches data from the Rijksmuseum API using the request() method and passes it to the overview view using Handlebars template engine. Similarly, the /details/:id route fetches data for a specific art object based on the ID passed in the URL parameter, and the /categorie/:type route fetches data for a specific art category.
 
 
 ## :wrench:Enhancements
@@ -46,9 +50,6 @@ Congrats, you are now all set! Start your liveserver and enjoy!
 
 ## :bulb:Api
 I used the Rijksmuseum API for this project and before I started, I did some research to the API. The research can be found in [the wiki](https://github.com/PipHarsveld/rijksmuseum/wiki/Analyseren).
-
-<!-- ## :memo:Documentation
-For further documentation of the process, see the [wiki](https://github.com/PipHarsveld/rijksmuseum/wiki) of this repository. -->
 
 
 ## :ledger:Sources
