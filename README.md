@@ -85,12 +85,12 @@ In order to improve the performance of my PWA, I have implemented several enhanc
 - **Server-side rendering (SSR):** I used Node.js to implement SSR, which reduces the initial loading time of my PWA.
 - **Minification and compression of assets:** To reduce the size of my app's assets, I have minified and compressed them, resulting in faster loading times.
 - **Lazy loading of images:** I have implemented lazy loading, which means that the images only load when they are needed, thus improving the initial loading time of my PWA.
-    ```
+    ``` html
         <img src="{{this.webImage.url}}600" loading="lazy">
     ```
 - **Caching:** I used service workers to cache my app's assets, enabling my PWA to load faster even when offline. See my service worker file [here](https://github.com/PipHarsveld/progressive-web-app/blob/main/service-worker.js) to see how I implemented it.
 - **Cache-control:** I have used the cache-control HTTP header to set the cache duration for my app's assets to one year, which means that the browser will deliver the assets from the cache after a year.
-    ```
+    ``` js
     app.use((req, res, next) => {
         res.setHeader('Cache-Control', 'max-age=' + 60 * 60 * 24 * 365);
         next();
@@ -98,7 +98,7 @@ In order to improve the performance of my PWA, I have implemented several enhanc
     ```
 - **Block font loading and font rendering controls:** To optimize the font loading process, I have used the font-display: swap CSS property, which tells the browser to display fallback fonts until the custom fonts are loaded. This prevents layout shifts and improves the perceived performance of my PWA.
 By implementing these enhancements, I have optimized the critical render path of my PWA, resulting in a better user experience for my app's users.
-```
+``` css
     @font-face {
         font-family: 'Panno';
         src: url(../fonts/PannoText-Normal.woff) format('woff'),
