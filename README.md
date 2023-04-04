@@ -82,8 +82,12 @@ In the router.js file, I defined different routes using the router.get() method 
 ## :wrench:Enhancements
 In order to improve the performance of my PWA, I have implemented several enhancements to optimize the critical render path. These enhancements include:
 
-- **Server-side rendering (SSR):** I used Node.js to implement SSR, which reduces the initial loading time of my PWA.
-- **Minification and compression of assets:** To reduce the size of my app's assets, I have minified and compressed them, resulting in faster loading times.
+### Server-side rendering (SSR)
+I used Node.js to implement SSR, which reduces the initial loading time of my PWA.
+
+### Minification and compression of assets
+To reduce the size of my app's assets, I have minified and compressed them, resulting in faster loading times.
+
 - **Lazy loading of images:** I have implemented lazy loading, which means that the images only load when they are needed, thus improving the initial loading time of my PWA.
     ``` html
         <img src="{{this.webImage.url}}600" loading="lazy">
