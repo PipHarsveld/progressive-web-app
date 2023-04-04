@@ -11,13 +11,13 @@ router.get('/', (req, res) => {
 })
 
 router.get('/overview', (req, res) => {
-    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&ps=7`, {json: true}, function (err, response, data){
+    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&ps=10`, { json: true }, function (err, response, data) {
         if (err) {
             res.send(err);
             console.error('error:', err);
         } else {
             const artPieces = data.artObjects;
-            res.render('overview', {layout : 'index', data: artPieces, title: 'Overzicht'});
+            res.render('overview', { layout: 'index', data: artPieces, title: 'Overzicht' });
         }
     })
 });
@@ -27,13 +27,13 @@ router.get('/details/:id', (req, res) => {
     const idWithPrefix = req.params.id;
     const id = idWithPrefix.replace('nl-', '');
 
-    request(`https://www.rijksmuseum.nl/api/nl/collection/${id}?key=${process.env.API_KEY}`, {json: true}, function (err, response, data){
+    request(`https://www.rijksmuseum.nl/api/nl/collection/${id}?key=${process.env.API_KEY}`, { json: true }, function (err, response, data) {
         if (err) {
             res.send(err);
             console.error('error:', err);
         } else {
             const details = data.artObject;
-            res.render('details', { layout: 'index', data: details, title: 'Details'});
+            res.render('details', { layout: 'index', data: details, title: 'Details' });
         }
     })
 
@@ -42,17 +42,18 @@ router.get('/details/:id', (req, res) => {
 
 router.get('/categorie/:type', (req, res) => {
     const typeArt = req.params['type'];
-    console.log(typeArt);
 
-    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&type=${typeArt}`, {json: true}, function (err, response, data){
-        if (err) {
-            res.send(err);
-            console.error('error:', err);
-        } else {
-            const specificArtPieces = data.artObjects;
-            res.render('category', {layout : 'index', data: specificArtPieces, categorie: typeArt, title: 'Categorie'});
-        }
-    })
+    request(`https://www.rijksmuseum.nl/api/nl/collection/?key=${process.env.API_KEY}&type=${typeArt}`,
+        { json: true },
+        function (err, response, data) {
+            if (err) {
+                res.send(err);
+                console.error('error:', err);
+            } else {
+                const specificArtPieces = data.artObjects;
+                res.render('category', { layout: 'index', data: specificArtPieces, categorie: typeArt, title: 'Categorie' });
+            }
+        })
 });
 
 
@@ -62,8 +63,8 @@ router.get('/zoeken', (req, res) => {
 
 
 router.get('/offline', (req, res) => {
-    res.render('offline', { layout: 'index', title: 'Offline'});
+    res.render('offline', { layout: 'index', title: 'Offline' });
 });
 
 
-export {router};
+export { router };
