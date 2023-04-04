@@ -30,14 +30,6 @@ app.engine('hbs', handlebars.engine({
 }));
 
 
-// Define a custom error handler middleware function
-// app.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(404).render('error');
-// });
-
-
-
 
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
