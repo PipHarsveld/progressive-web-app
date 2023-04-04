@@ -30,7 +30,19 @@ To use this app, you will have to clone this repo. You can do this by typing the
 git clone https://github.com/PipHarsveld/rijksmuseum
 ```
 
-Congrats, you are now all set! Start your liveserver and enjoy!
+Atfer cloning the repo, you will have to install the dependencies. You can do this by typing the following command in your terminal:
+
+```
+npm install
+```
+
+Once the dependencies are installed, you can run the project by typing the following command in your terminal:
+
+```
+npm run dev
+```
+
+Congrats, you are now all set! Go to localhost:5000 and enjoy RijksKunst!
 
 ## :fork_and_knife:Rendering choices
 Client-side rendering and server-side rendering are two approaches used to display web content. With client-side rendering, the web browser requests data from the server and then uses JavaScript to generate and display the HTML. Server-side rendering, on the other hand, is when the server generates the HTML for a webpage and sends it to the client. 
@@ -42,7 +54,9 @@ In the router.js file, I defined different routes using the router.get() method 
 
 ## :wrench:Enhancements
 <!-- This would be a good place for a list of enhancements to optimize the critical render path implemented your app  -->
-
+- Cache-Control
+- Header image verkleind
+- Size bij image ophalen toegevoegd op 600 --> gevolg: niet altijd gevulde grid
 
 ## :chart_with_upwards_trend:Activity diagram
 <!-- ...and an activity diagram including the Service Worker 📈 -->
