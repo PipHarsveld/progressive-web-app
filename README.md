@@ -23,11 +23,31 @@ As an art lover, I want to be able to search and view art from the Rijksmuseum a
 - [X] Filter artworks based on category
 - [ ] Search bar for searching artworks based on object number, title of artwork or artist
 
+
+# :white_check_mark:Done during this course
+- [X] Redesign WAFS app and change the app structure
+- [X] Convert the client-side rendered app to a server-side rendered app
+    - [X] Convert app to Node.js
+    - [X] Use Express to create a server
+    - [X] Use Handlebars to render pages
+    - [X] Add a service worker
+        - [X] Make caching work
+        - [X] Make the app work offline
+    - [X] Add a manifest file
+- [X] Add progressive enhancement
+- [X] Optimize performance
+    - [X] Optimize images
+    - [X] Optimize CSS by minifying
+    - [X] Add cache-control
+- [X] Deploy the app
+
+
 ## :rocket:Install and Run the project
 To use this app, you will have to clone this repo. You can do this by typing the following command in your terminal:
 
 ```
-git clone https://github.com/PipHarsveld/rijksmuseum
+git clone https://github.com/PipHarsveld/progressive-web-app
+
 ```
 
 Atfer cloning the repo, you will have to install the dependencies. You can do this by typing the following command in your terminal:
@@ -36,7 +56,16 @@ Atfer cloning the repo, you will have to install the dependencies. You can do th
 npm install
 ```
 
-Once the dependencies are installed, you can run the project by typing the following command in your terminal:
+To get the data from the Rijksmuseum API, you'll need a API key. To get this, make an account on the [Rijksmuseum API website](https://data.rijksmuseum.nl/object-metadata/api/). After you've made an account, you can get your API key by clicking on the 'Get your key' button. Create a .env file, copy the API key and paste it in the .env file.
+
+Once the dependencies are installed, you can direct to the project folder with this command:
+
+```
+cd progressive-web-app
+
+```
+
+For the final step, run the project by typing the following command in your terminal:
 
 ```
 npm run dev
@@ -68,6 +97,7 @@ I used the Rijksmuseum API for this project and before I started, I did some res
 
 ## :ledger:Sources
 https://levelup.gitconnected.com/set-up-and-run-a-simple-node-server-project-38b403a3dc09
+
 
 ## :technologist:Author
 This project is designed and created by [Pip Harsveld](https://github.com/PipHarsveld) for the course WebApp From Scratch in the minor Webdesign and Development.
