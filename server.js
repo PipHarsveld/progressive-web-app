@@ -1,7 +1,7 @@
 import path from 'path';
 import express from 'express';
 import handlebars from 'express-handlebars';
-import {router} from './router/router.js';
+import { router } from './router/router.js';
 
 const app = express();
 const port = 5000;
@@ -11,6 +11,12 @@ const __dirname = path.resolve();
 // Link the templating engine to the express app
 app.set('view engine', 'hbs');
 app.set('views', 'views');
+
+// Remove cache after 1 year
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'max-age=' + 60 * 60 * 24 * 365);
+    next();
+});
 
 app.use('/', router);
 app.use(express.static(__dirname + '/static')); //Css, images en javascript
@@ -22,6 +28,15 @@ app.engine('hbs', handlebars.engine({
     defaultLayout: 'index',
     partialsDir: __dirname + '/views/partials'
 }));
+
+
+// Define a custom error handler middleware function
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(404).render('error');
+// });
+
+
 
 
 app.listen(port, () => {
