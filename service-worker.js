@@ -6,8 +6,12 @@ const CORE_ASSETS = [
     "/manifest.json",
     "/offline",
     "/css/style.css",
-    "/images/background_header.jpeg",
-    "/images/icon-192x192.png"
+    "/images/background_header.webp",
+    "/images/icon-192x192.png",
+    "/fonts/PannoText-Normal.woff",
+    "/fonts/PannoText-Normal.woff2",
+    "/fonts/PannoText-Bold.woff",
+    "/fonts/PannoText-Bold.woff2"
 ]
 
 // Install event that is triggered when the service worker is first installed
@@ -17,7 +21,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         // Open the cache and add all the core assets to it
         caches.open(CORE_CACHE_NAME)
-            .then(cache => cache.addAll(CORE_ASSETS))
+            .then(cache => cache.addAll(CORE_ASSETS)) 
             // Activate the service worker immediately once the core assets have been cached
             .then(() => self.skipWaiting())
     )
