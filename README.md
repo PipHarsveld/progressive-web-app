@@ -96,7 +96,9 @@ I have implemented lazy loading, which means that the images only load when they
 
 ### Caching
  I used service workers to cache my app's assets, enabling my PWA to load faster even when offline. See my service worker file [here](https://github.com/PipHarsveld/progressive-web-app/blob/main/service-worker.js) to see how I implemented it.
-- **Cache-control:** I have used the cache-control HTTP header to set the cache duration for my app's assets to one year, which means that the browser will deliver the assets from the cache after a year.
+
+### Cache-control 
+I have used the cache-control HTTP header to set the cache duration for my app's assets to one year, which means that the browser will deliver the assets from the cache after a year.
     ``` js
     app.use((req, res, next) => {
         res.setHeader('Cache-Control', 'max-age=' + 60 * 60 * 24 * 365);
