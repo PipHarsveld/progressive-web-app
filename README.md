@@ -47,7 +47,6 @@ To use this app, you will have to clone this repo. You can do this by typing the
 
 ```
 git clone https://github.com/PipHarsveld/progressive-web-app
-
 ```
 
 Atfer cloning the repo, you will have to install the dependencies. You can do this by typing the following command in your terminal:
@@ -62,7 +61,6 @@ Once the dependencies are installed, you can direct to the project folder with t
 
 ```
 cd progressive-web-app
-
 ```
 
 For the final step, run the project by typing the following command in your terminal:
@@ -71,7 +69,7 @@ For the final step, run the project by typing the following command in your term
 npm run dev
 ```
 
-Congrats, you are now all set! Go to localhost:5000 and enjoy RijksKunst!
+Congrats, you are now all set! Go to `http://localhost:5000/` and enjoy RijksKunst!
 
 ## :fork_and_knife:Rendering choices
 Client-side rendering and server-side rendering are two approaches used to display web content. With client-side rendering, the web browser requests data from the server and then uses JavaScript to generate and display the HTML. Server-side rendering, on the other hand, is when the server generates the HTML for a webpage and sends it to the client. 
@@ -82,10 +80,41 @@ In the router.js file, I defined different routes using the router.get() method 
 
 
 ## :wrench:Enhancements
-<!-- This would be a good place for a list of enhancements to optimize the critical render path implemented your app  -->
-- Cache-Control
-- Header image verkleind
-- Size bij image ophalen toegevoegd op 600 --> gevolg: niet altijd gevulde grid
+In order to improve the performance of my PWA, I have implemented several enhancements to optimize the critical render path. These enhancements include:
+
+- **Server-side rendering (SSR):** I used Node.js to implement SSR, which reduces the initial loading time of my PWA.
+- **Minification and compression of assets:** To reduce the size of my app's assets, I have minified and compressed them, resulting in faster loading times.
+- **Lazy loading of images:** I have implemented lazy loading, which means that the images only load when they are needed, thus improving the initial loading time of my PWA.
+    ```
+        <img src="{{this.webImage.url}}600" loading="lazy">
+    ```
+- **Caching:** I used service workers to cache my app's assets, enabling my PWA to load faster even when offline. See my service worker file [here](https://github.com/PipHarsveld/progressive-web-app/blob/main/service-worker.js) to see how I implemented it.
+- **Cache-control:** I have used the cache-control HTTP header to set the cache duration for my app's assets to one year, which means that the browser will deliver the assets from the cache after a year.
+    ```
+    app.use((req, res, next) => {
+        res.setHeader('Cache-Control', 'max-age=' + 60 * 60 * 24 * 365);
+        next();
+    });
+    ```
+- **Block font loading and font rendering controls:** To optimize the font loading process, I have used the font-display: swap CSS property, which tells the browser to display fallback fonts until the custom fonts are loaded. This prevents layout shifts and improves the perceived performance of my PWA.
+By implementing these enhancements, I have optimized the critical render path of my PWA, resulting in a better user experience for my app's users.
+```
+    @font-face {
+        font-family: 'Panno';
+        src: url(../fonts/PannoText-Normal.woff) format('woff'),
+            url(../fonts/PannoText-Normal.woff2) format('woff2');
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Panno';
+        src: url(../fonts/PannoText-Bold.woff) format('woff'),
+            url(../fonts/PannoText-Bold.woff2) format('woff2');
+        font-weight: 700;
+        font-display: swap;
+    }
+```
 
 ## :chart_with_upwards_trend:Activity diagram
 <!-- ...and an activity diagram including the Service Worker 📈 -->
