@@ -85,8 +85,8 @@ In order to improve the performance of my PWA, I have implemented several enhanc
 ### Server-side rendering (SSR)
 I used Node.js to implement SSR, which reduces the initial loading time of my PWA.
 
-### Minification and compression of assets
-To reduce the size of my app's assets, I have minified and compressed them, resulting in faster loading times.
+### Minification CSS
+To reduce the size of my app's assets, I have minified my CSS file, resulting in faster loading times.
 
 ### Lazy loading of images 
 I have implemented lazy loading of images using the `loading="lazy"` attribute in the img tag, which means that the images only load when they are needed, thus improving the initial loading time of my PWA.
