@@ -7,6 +7,7 @@ const CORE_ASSETS = [
     "/offline",
     "/css/style.css",
     "/images/background_header.webp",
+    "/static/images/melkmeisje.webp",
     "/images/icon-192x192.png",
     "/fonts/PannoText-Normal.woff",
     "/fonts/PannoText-Normal.woff2",
