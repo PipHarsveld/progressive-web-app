@@ -264,8 +264,6 @@ header>section:nth-of-type(2)>h1::first-letter {
     top: 60vh;
     overflow: hidden;
     max-width: 80rem;
-    left: 50%;
-    transform: translate(-50%);
 }
 
 .details>main>section>ul {
@@ -451,6 +449,9 @@ header>section:nth-of-type(2)>h1::first-letter {
 
 
     .details>main>section {
-        width: 70rem;
+        width: 100%;
+        max-width: 70rem;
+        left: 50%;
+        transform: translate(-50%);
     }
 }
