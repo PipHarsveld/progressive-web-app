@@ -22,7 +22,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         // Open the cache and add all the core assets to it
         caches.open(CORE_CACHE_NAME)
-            .then(cache => cache.addAll(CORE_ASSETS)) 
+            .then(cache => cache.addAll(CORE_ASSETS))
             // Activate the service worker immediately once the core assets have been cached
             .then(() => self.skipWaiting())
     )
@@ -35,7 +35,7 @@ self.addEventListener("activate", (event) => {
     event.waitUntil(clients.claim())
 })
 
-
+// Fetch event that is triggered when a resource/url is fetched
 self.addEventListener("fetch", (event) => {
     const req = event.request;
     console.log("Fetch event:" + req.url);
@@ -48,8 +48,8 @@ self.addEventListener("fetch", (event) => {
             caches.open(CORE_CACHE_NAME)
                 .then(cache => cache.match(req.url)) // Check if the request is already cached
         );
-    } else if (isHtmlGetRequest(req)) { // Check if the request is a GET request for HTML when it's not a core GET request
-        console.log('html get request', req.url);
+    } else if (isHtmlGetRequest(req)) { // Check if the request is a GET request for HTML
+        console.log('Html get request', req.url);
 
         event.respondWith(
             caches.open('html-cache')
