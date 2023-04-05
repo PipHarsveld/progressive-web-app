@@ -102,6 +102,10 @@ header>section a {
     font-size: 0pt;
 }
 
+p, a, li, input{
+    font-size: 1.2rem;
+}
+
 
 
 
@@ -233,7 +237,8 @@ header>section:nth-of-type(2)>h1::first-letter {
 
 .overview>ul>li>a>img {
     object-fit: cover;
-    min-height: 100%;
+    height: 100%;
+    width: 100%;
     object-position: center;
 }
 
@@ -291,7 +296,6 @@ header>section:nth-of-type(2)>h1::first-letter {
 /*************/
 /* Categorie */
 /*************/
-
 .category>ul {
     display: grid;
     grid-template-columns: repeat(3, calc(100vw / 3));
@@ -333,7 +337,8 @@ header>section:nth-of-type(2)>h1::first-letter {
 
 .category>ul>li>a>img {
     object-fit: cover;
-    min-height: 100%;
+    height: 100%;
+    width: 100%;
     object-position: center;
 }
 
@@ -392,6 +397,28 @@ header>section:nth-of-type(2)>h1::first-letter {
     width: 100%;
 }
 
+
+
+
+/****************/
+/* Offline page */
+/****************/
+.offline>main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.offline img{
+    margin: 2rem;
+}
+
+.offline p{
+    text-align: center;
+    max-width: 25rem;
+}
 
 
 @media screen and (min-width: 800px) {
