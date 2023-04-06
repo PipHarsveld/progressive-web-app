@@ -9,9 +9,11 @@ The web application is a Single Page Application (SPA) that allows users to sear
 ## :card_file_box:Table of contents
 * [User story](#busts_in_silhouetteuser-story)
 * [Features](#sparklesfeatures)
+* [Done during this course](#white_check_markdone-during-this-course)
 * [Install and Run the project](#rocketinstall-and-run-the-project)
+* [Rendering Choices](#fork_and_kniferendering_choices)
+* [Enhancements](#wrenchenhancements)
 * [API](#bulbapi)
-* [Documentation](#memodocumentation)
 * [Author](#technologistauthor)
 * [License](#page_facing_uplicense)
 
@@ -196,8 +198,8 @@ By implementing these enhancements, I have optimized the critical render path of
 I used the Rijksmuseum API for this project and before I started, I did some research to the API. The Rijksmuseum API is a public API provided by the Rijksmuseum in Amsterdam, which allows developers to access and use data about the museum's collections. The API provides access to a large number of images and metadata for artworks, along with other information such as artist biographies and collection highlights. If you would like to know more about the API, you can visit the [Rijksmuseum API documentation](https://data.rijksmuseum.nl/object-metadata/api/) or read my [research](https://github.com/PipHarsveld/rijksmuseum/wiki/Analyseren).
 
 
-## :ledger:Sources
-https://levelup.gitconnected.com/set-up-and-run-a-simple-node-server-project-38b403a3dc09
+<!-- ## :ledger:Sources
+https://levelup.gitconnected.com/set-up-and-run-a-simple-node-server-project-38b403a3dc09 -->
 
 
 ## :technologist:Author
