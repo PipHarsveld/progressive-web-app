@@ -25,7 +25,7 @@ As an art lover, I want to be able to search and view art from the Rijksmuseum a
 - [ ] Search bar for searching artworks based on object number, title of artwork or artist
 
 
-# :white_check_mark:Done during this course
+## :white_check_mark:Done during this course
 - [X] Redesign WAFS app and change the app structure
 - [X] Convert the client-side rendered app to a server-side rendered app
     - [X] Convert app to Node.js
