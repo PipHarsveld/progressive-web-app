@@ -81,6 +81,7 @@ function isHtmlGetRequest(request) {
     return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').indexOf('text/html') > -1);
 }
 
+// Checks if a request is a GET request and if the URL is in the CORE_ASSETS array
 function isCoreGetRequest(request) {
     return request.method === 'GET' && CORE_ASSETS.includes(getPathName(request.url));
 }
