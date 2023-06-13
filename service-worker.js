@@ -1,6 +1,7 @@
 // Define constants
-const CORE_CACHE = 1
-const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
+const CORE_CACHE = 2; // Increase the cache version
+const CORE_CACHE_NAME = `core-v${CORE_CACHE}`;
+
 // Array of core assets to be cached
 const CORE_ASSETS = [
     "/manifest.json",
@@ -35,21 +36,22 @@ self.addEventListener("activate", (event) => {
     event.waitUntil(clients.claim())
 })
 
+
 // Fetch event that is triggered when a resource/url is fetched
 self.addEventListener("fetch", (event) => {
     const req = event.request;
-    console.log("Fetch event:" + req.url);
+    console.log("Fetch event:", req.url);
 
     // Check if the request is a GET request
     if (isCoreGetRequest(req)) {
-        console.log('Core get request: ', req.url);
+        console.log('Core get request:', req.url);
 
         event.respondWith(
             caches.open(CORE_CACHE_NAME)
-                .then(cache => cache.match(req.url)) // Check if the request is already cached
+                .then(cache => cache.match(getPathName(req.url))) // Match the request pathname
         );
     } else if (isHtmlGetRequest(req)) { // Check if the request is a GET request for HTML
-        console.log('Html get request', req.url);
+        console.log('Html get request:', req.url);
 
         event.respondWith(
             caches.open('html-cache')
@@ -59,7 +61,7 @@ self.addEventListener("fetch", (event) => {
                     return caches.open(CORE_CACHE_NAME)
                         .then(cache => cache.match('/offline'))
                 })
-        )
+        );
     }
 });
 
